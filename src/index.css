@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+@font-face {
+  font-family: 'dosis-bold';
+  src: url(/public/fonts/dosis.ttf);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'dosis-normal';
+  src: url(/public/fonts/Dosis-Medium.ttf);
+}
+
+:root{
+
+    --darkBlue-- : #183661;
+    --blue--: #1C4B82 ;
+    --orange--: #DD6B4D;
+    --white--: #DAE1E7;
+
+
+}
+
+body {
+  font-family: 'dosis-bold';
+  background-color: var(--white--);
+}
+
+button:hover{
+  transition: .2s ease-out;
+  filter: brightness(110%) saturate(110%);
+}
+
+#orange{
+  color: var(--orange--);
+}
+#darkBlue {
+  color: var(--darkBlue--);
+}
+#blue{
+  color: var(--blue--);
 }

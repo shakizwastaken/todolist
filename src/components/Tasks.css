@@ -1,0 +1,88 @@
+
+.tasksContainer{
+
+    background-color: var(--orange--);
+    border-radius: 10px;
+
+    width: 100%;
+    
+    padding: .1px;
+}
+
+.task {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--blue--);
+    border-radius: 15px;
+    margin: 20px;
+
+    font-family: 'dosis-normal';
+}
+
+.task > * {
+    padding: 10px;
+}
+
+.task .info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    color: white;
+}
+
+.task h2 {
+    text-align: left;
+}
+
+.task .btns button{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--orange--);
+
+    width: 70px;
+    padding: 10px;
+    margin: 5px;
+
+    border-radius: 3px;
+
+}
+
+
+.tasksModifier {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--blue--);
+    color: white;
+
+    padding: 25px;
+    margin: 10px;
+
+    border-radius: 10px;
+}
+
+.tasksModifier button {
+    background-color: var(--orange--);
+
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.tasksModifier * {
+    margin: 5px;
+}
+
+#noTask {
+    padding-top: 30px;
+}
