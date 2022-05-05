@@ -1,9 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState,useRef,useEffect} from 'react';
 
 const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => {
 
     const [inputTitle,SetTitle] = useState(title);
     const [inputContent,SetContent] = useState(content);
+
+    const inputTitleEl = useRef(null);
 
     const nonEditable = () => {
        return(<div className='info'>
@@ -20,7 +22,7 @@ const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => 
     const editable = () => {
         return (
         <div className='editing' >
-            <input className='title' onChange={(e)=>{SetTitle(e.target.value)}} value={inputTitle}></input>
+            <input className='title' ref={inputTitleEl} onChange={(e)=>{SetTitle(e.target.value)}} value={inputTitle}></input>
             <input className='content' onChange={(e)=>{SetContent(e.target.value)}} value={inputContent}></input>
         </div>
         );
@@ -44,6 +46,12 @@ const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => 
             </div>
         );
     }
+
+    useEffect(() => {
+        if(editMode){
+            inputTitleEl.current.focus();
+        }
+    });
 
     return (
         <div className='task' >

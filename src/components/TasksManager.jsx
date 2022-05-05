@@ -53,8 +53,7 @@ function TasksManager() {
 
         SetCurrentTasks(result);
     }
-
-    //might need this later...
+    
     const isEditing = ()=>{
         let value = false
         
@@ -79,10 +78,23 @@ function TasksManager() {
         SetCurrentTasks(newArr);
     }
 
+    const renderTask = (task) => {
+        return <Task {...task} key={task.id} setTask={setTask} removeTask={removeTask} toggleEditMode={toggleEditMode} />
+    }
+
     const renderTasks = () =>{
-        return currentTasks.map(
-            (task)=> <Task {...task} key={task.id} setTask={setTask} removeTask={removeTask} toggleEditMode={toggleEditMode} />
-        );
+
+        if(!isEditing()){
+            
+            return currentTasks.map(
+                (task)=> renderTask(task)
+            );
+
+        }else{
+            return currentTasks.map(
+                (task)=> task.editMode?renderTask(task):null
+            );
+        }
     }
 
     return (
@@ -92,7 +104,6 @@ function TasksManager() {
             <div className='tasksContainer'>
                 {currentTasks.length !== 0 ?renderTasks():<h1 id='noTask' >You currently have 0 active tasks</h1>}
             </div>
-
         </div>
     );
 }
