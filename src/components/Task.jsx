@@ -1,22 +1,15 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => {
 
-    const inputTitle = title;
-    const inputContent = content;
+    const [inputTitle,SetTitle] = useState(title);
+    const [inputContent,SetContent] = useState(content);
 
     const nonEditable = () => {
        return(<div className='info'>
                 <h2>{title}</h2>
                 <p>{content}</p>
             </div>);
-    }
-
-    const handleTitleInput = (e) => {
-        inputTitle = e.target.value;
-    }
-    const handleContentInput = (e) => {
-        inputTitle = e.target.value;
     }
 
     const saveEdit = () => {
@@ -27,8 +20,8 @@ const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => 
     const editable = () => {
         return (
         <div className='editing' >
-            <input className='title' onInput={()=>{handleTitleInput()}} value={inputTitle}></input>
-            <input className='content' onInput={()=>{handleContentInput()}} value={inputContent}></input>
+            <input className='title' onChange={(e)=>{SetTitle(e.target.value)}} value={inputTitle}></input>
+            <input className='content' onChange={(e)=>{SetContent(e.target.value)}} value={inputContent}></input>
         </div>
         );
     }
