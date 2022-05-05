@@ -1,12 +1,10 @@
 
 .tasksContainer{
-
-    background-color: var(--orange--);
-    border-radius: 10px;
+    border-radius: var(--radius--);
 
     width: 100%;
     
-    padding: .1px;
+    padding: var(--padding--);
 }
 
 .task {
@@ -15,15 +13,18 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: var(--blue--);
-    border-radius: 15px;
-    margin: 20px;
+    border-radius: var(--radius--);
+    border: var(--border--);
+    margin: var(--margin--);
 
     font-family: 'dosis-normal';
+    
+    width: 780px
 }
 
 .task > * {
-    padding: 10px;
+    padding: var(--padding--);
+    padding-inline: 1rem;
 }
 
 .task .info {
@@ -31,8 +32,6 @@
     flex-direction: column;
 
     justify-content: space-around;
-
-    color: white;
 }
 
 .task h2 {
@@ -46,13 +45,12 @@
     justify-content: center;
     align-items: center;
 
-    background-color: var(--orange--);
+    border: var(--border--);
+    border-radius: var(--radius--);
 
     width: 70px;
-    padding: 10px;
-    margin: 5px;
-
-    border-radius: 3px;
+    padding: var(--padding--);
+    margin: var(--margin--);
 
 }
 
@@ -63,26 +61,72 @@
     justify-content: space-between;
     align-items: center;
 
-    background-color: var(--blue--);
-    color: white;
+    font-family: 'bold';
 
-    padding: 25px;
-    margin: 10px;
+    padding: var(--padding--);
+    margin: var(--margin--);
 
-    border-radius: 10px;
-}
-
-.tasksModifier button {
-    background-color: var(--orange--);
-
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: var(--radius--);
 }
 
 .tasksModifier * {
-    margin: 5px;
+    margin: var(--margin--);
 }
 
-#noTask {
-    padding-top: 30px;
+.tasksModifier button {
+    
+    border: var(--border--);
+    border-radius: var(--radius--);
+    
+    padding: var(--padding--);
 }
+
+.tasksModifier input {
+    border-radius: var(--radius--);
+    border: var(--border--);
+
+    width: 35%;
+}
+
+.editing {
+    display: flex;
+    flex-direction: column;
+}
+
+.editing * {
+    border:  none;
+    background: none;
+}
+
+.editing .title {
+    font-family: 'bold';
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+
+#noTask {
+    padding: 30px 0px;
+}
+
+#saveBtn:hover,#editBtn:hover {
+    background-color: green;
+    border-color: green;
+
+    color: white;
+}
+
+#cancelBtn:hover,#delBtn:hover {
+    background-color: red;
+    border-color: red;
+    
+    color: white;
+}
+
+#createTaskBtn:hover{
+    background-color: var(--main--);
+    border-color: var(--main--);
+    
+    color: white; 
+}
+

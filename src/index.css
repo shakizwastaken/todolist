@@ -1,24 +1,33 @@
 
 
 @font-face {
-  font-family: 'dosis-bold';
+  font-family: 'bold';
   src: url(/public/fonts/dosis.ttf);
 }
 
 @font-face {
-  font-family: 'dosis-normal';
+  font-family: 'medium';
+  src: url(/public/fonts/Dosis-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'light';
   src: url(/public/fonts/Dosis-Medium.ttf);
 }
 
 :root{
 
-    --darkBlue-- : #183661;
-    --blue--: #1C4B82 ;
-    --orange--: #DD6B4D;
-    --white--: #DAE1E7;
+    --main-- : #192965;
+    --shade--: #7FB5FF ;
+    --white-- : #F0EFEF;
 
+    --border-- : solid .15rem var(--main--);
+    --radius-- : .4rem;
 
-}
+    --padding--: .4rem;
+    --margin--: .2rem;
+
+  }
 
 body {
   font-family: 'dosis-bold';
@@ -30,12 +39,12 @@ button:hover{
   filter: brightness(110%) saturate(110%);
 }
 
-#orange{
-  color: var(--orange--);
+.main{
+  color: var(--main--);
 }
-#darkBlue {
-  color: var(--darkBlue--);
+.shade{
+  color: var(--shade--)
 }
-#blue{
-  color: var(--blue--);
+.white{
+  color: var(--white--);
 }

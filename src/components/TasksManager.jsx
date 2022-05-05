@@ -8,14 +8,16 @@ function TasksManager() {
     let [currentTasks,SetCurrentTasks] = useState([
         {
             id :0,
-            title:"this is an example task",
-            content:"this task is for display purposes, you can feel free to delete it and add your own ones!"
+            title:"This is an example task",
+            content:"This task is for display purposes, you can feel free to delete it and add your own ones!",
+            editMode:false
         }
         ,
         {
             id :1,
-            title:"this qweqis an example task",
-            content:"this task iqwqweqs for display purposes, you can feel free to delete it and add your own ones!"
+            title:"This qweqis an example task",
+            content:"This task iqwqweqs for display purposes, you can feel free to delete it and add your own ones!",
+            editMode:false
         }
     ]);
 
@@ -24,8 +26,44 @@ function TasksManager() {
             SetCurrentTasks(currentTasks.concat({
                 id:id,
                 title:title,
-                content:content
+                content:content,
+                editMode:false
         }));
+    }
+
+    const toggleEditMode = (id) => {
+
+        const task = currentTasks[id];
+        let result = [...currentTasks];
+
+        task.editMode = !task.editMode;
+        result[id] = task;
+        
+        SetCurrentTasks(result);
+    }
+
+    const setTask = (id,title,content) => {
+
+        const task = currentTasks[id];
+        let result = [...currentTasks];
+
+        task.title = title;
+        task.content = content
+        result[id] = task;
+
+        SetCurrentTasks(result);
+    }
+
+    //might need this later...
+    const isEditing = ()=>{
+        let value = false
+        
+        currentTasks.forEach((el)=>{
+            if(el.editMode){
+                value = true;
+            }
+        });
+        return value;
     }
 
     const removeTask = (id) => {
@@ -43,20 +81,17 @@ function TasksManager() {
 
     const renderTasks = () =>{
         return currentTasks.map(
-            (task)=> <Task {...task} key={task.id} removeTask={removeTask} />
+            (task)=> <Task {...task} key={task.id} setTask={setTask} removeTask={removeTask} toggleEditMode={toggleEditMode} />
         );
     }
 
     return (
         <div>
-            
-            <div className='tasksContainer'>
-
-                {currentTasks.length !== 0 ?renderTasks():<h1 id='noTask' >You currently have 0 active tasks</h1>}
-            
-            </div>
-
             <TasksModifier currentTasks={currentTasks} addTask={addTask} />
+           
+            <div className='tasksContainer'>
+                {currentTasks.length !== 0 ?renderTasks():<h1 id='noTask' >You currently have 0 active tasks</h1>}
+            </div>
 
         </div>
     );

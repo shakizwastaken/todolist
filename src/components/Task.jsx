@@ -1,15 +1,44 @@
-import React,{useState} from 'react';
+import React from 'react';
 
-const Task = ({title,content,id,removeTask}) => {
+const Task = ({title,content,id,removeTask,editMode,toggleEditMode,setTask}) => {
 
-    let [editMode, SetEditMode] = useState(false);
+    const inputTitle = title;
+    const inputContent = content;
+
+    const nonEditable = () => {
+       return(<div className='info'>
+                <h2>{title}</h2>
+                <p>{content}</p>
+            </div>);
+    }
+
+    const handleTitleInput = (e) => {
+        inputTitle = e.target.value;
+    }
+    const handleContentInput = (e) => {
+        inputTitle = e.target.value;
+    }
+
+    const saveEdit = () => {
+        setTask(id,inputTitle,inputContent);
+        toggleEditMode(id);
+    }
+
+    const editable = () => {
+        return (
+        <div className='editing' >
+            <input className='title' onInput={()=>{handleTitleInput()}} value={inputTitle}></input>
+            <input className='content' onInput={()=>{handleContentInput()}} value={inputContent}></input>
+        </div>
+        );
+    }
 
     const renderEditButtons = () => {
         //edit buttons...
         return(
         <div className='editBtns'>
-            <>comming soon...</>
-            <button onClick={()=>{toggleEditMode()}} >cancel</button>
+            <button id='saveBtn' onClick={()=>{saveEdit()}}>Save</button>
+            <button id='cancelBtn' onClick={()=>{toggleEditMode(id)}} >Cancel</button>
         </div>
         );
     }
@@ -17,21 +46,16 @@ const Task = ({title,content,id,removeTask}) => {
     const renderSettingsBtns = () => {
         return(
             <div className='taskSettings'>
-                <button onClick={()=>{removeTask(id)}} >delete</button>
-                <button onClick={()=>{toggleEditMode()}}>edit</button>
+                <button id='editBtn' onClick={()=>{toggleEditMode(id)}}>Edit</button>
+                <button id='delBtn' onClick={()=>{removeTask(id)}} >Delete</button>
             </div>
         );
     }
 
-    const toggleEditMode = () => {
-        SetEditMode(!editMode);
-    }
-
     return (
         <div className='task' >
-            <div className='info'>
-                <h2>{title}</h2>
-                <p>{content}</p>
+            <div>
+                {editMode?editable():nonEditable()}
             </div>
             <div className='btns'>
                 {editMode ? renderEditButtons():renderSettingsBtns()}

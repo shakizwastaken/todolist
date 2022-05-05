@@ -5,11 +5,18 @@ function TasksModifier({currentTasks,addTask}) {
     const [inputTitle,SetTitle] = useState('');
     const [inputContent,SetContent] = useState('');
 
-    const handleSubmit = (e) =>{
-        
-        e.preventDefault();
-        console.log(inputTitle,inputContent);
+    const handleKey = (e)=> {
+        if(e.key === 'Enter'){
+            submit();
+        }
+    }
 
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        submit();
+    }
+
+    const submit=()=>{
         if(checkValues()){
             addTask(inputTitle,inputContent);
             clearStates();
@@ -34,11 +41,11 @@ function TasksModifier({currentTasks,addTask}) {
 
                 <label>
                     title
-                    <input placeholder='title' name='title' value= {inputTitle} onChange={(e)=>{SetTitle(e.target.value)}} ></input>
+                    <input onKeyDown={(e)=>{handleKey(e)}} placeholder='title' name='title' value= {inputTitle} onChange={(e)=>{SetTitle(e.target.value)}} ></input>
                 </label>
                     <label>
                     content
-                    <input placeholder='content' name='content' value= {inputContent} onChange={(e)=>{SetContent(e.target.value)}} ></input>
+                    <input onKeyDown={(e)=>{handleKey(e)}} placeholder='content' name='content' value= {inputContent} onChange={(e)=>{SetContent(e.target.value)}} ></input>
                 </label>
                 
             </form>

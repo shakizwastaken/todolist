@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
 
-      <h1 id='hero' >Task <span id= 'orange'>Manager</span></h1>
+      <h1 id='hero' className='main' >Task<span className='shade' > Manager</span></h1>
 
       <TasksManager />
     </div>
